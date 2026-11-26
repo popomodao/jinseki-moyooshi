@@ -2,4 +2,4 @@
 
 神石高原町の協働支援センター・観光協会・町の広報などに出ている催しを日付順に並べたページです。毎週月曜に更新します。
 
-https://popomodao.github.io/jinseki-moyooshi/
+https://jinsekikogen-jaken.github.io/ へ引っ越しました（2026-11-26）

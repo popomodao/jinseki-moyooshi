@@ -2,156 +2,23 @@
 <html lang="ja">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="description" content="神石高原町の協働支援センター・観光協会・町の広報などに出ている催しを日付順にまとめた非公式のカレンダー">
-<style>html{color-scheme:light dark}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
-<title>神石高原じゃけん 催しカレンダー</title>
-<meta name="claude:viewport-fit-sides" content="cover">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@500;700&display=swap">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>神石高原の催し（引っ越しました）</title>
+<meta http-equiv="refresh" content="3; url=https://jinsekikogen-jaken.github.io/">
+<link rel="canonical" href="https://jinsekikogen-jaken.github.io/">
 <style>
-/* 町の掲示板を1本の縦の日めくりに。左に日付、右にその日の催し。色は高原の空（くすんだ青灰）、センターは小さな丸の色で見分ける */
-:root {
-  --bg: #e6ecf1; --band: #d6e0e8; --card: #f6f3ec; --ink: #283646; --sub: #607080; --line: #c4d2de; --accent: #4a688a;
-  --sat: #4a6fa0; --sun: #a8584a;
-  --sanwa: #6e8f5a; --toyomatsu: #b8683c; --yuki: #4a688a; --jinseki: #b59a3c; --other: #8a7a9a;
-  --font: "Zen Maru Gothic", "Hiragino Maru Gothic ProN", "Hiragino Sans", "Yu Gothic", sans-serif;
-}
-@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
-  --bg: #1b232c; --band: #232e39; --card: #26313c; --ink: #e4ebf1; --sub: #9db0c1; --line: #3a4856; --accent: #9dbbd9;
-  --sat: #8fb2e0; --sun: #e09a8c; --sanwa: #9cc083; --toyomatsu: #dd9468; --yuki: #86a8cf; --jinseki: #d6bd5e; --other: #b7a6c9; color-scheme: dark } }
-:root[data-theme="dark"] {
-  --bg: #1b232c; --band: #232e39; --card: #26313c; --ink: #e4ebf1; --sub: #9db0c1; --line: #3a4856; --accent: #9dbbd9;
-  --sat: #8fb2e0; --sun: #e09a8c; --sanwa: #9cc083; --toyomatsu: #dd9468; --yuki: #86a8cf; --jinseki: #d6bd5e; --other: #b7a6c9; color-scheme: dark }
-
-body { background: var(--bg); color: var(--ink); font-family: var(--font); font-weight: 500; font-size: 16px; line-height: 1.6; }
-.wrap { max-width: 640px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
-header { background: var(--band); margin-top: calc(-1 * env(safe-area-inset-top, 0px)); padding-top: calc(env(safe-area-inset-top, 0px) + 28px); padding-bottom: 20px; }
-.brand { font-size: 13px; color: var(--sub); letter-spacing: .12em; }
-h1 { font-size: 26px; font-weight: 700; line-height: 1.35; margin: 2px 0 8px; letter-spacing: .04em; text-wrap: balance; }
-.lead { margin: 0; color: var(--sub); font-size: 14px; }
-.badge { display: inline-block; margin-top: 12px; font-size: 12px; color: var(--sub); border: 1px solid var(--line); border-radius: 999px; padding: 2px 12px; }
-
-.filter { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: var(--bg); border-bottom: 1px solid var(--line); }
-.filter .wrap { display: flex; gap: 8px; padding-block: 10px; overflow-x: auto; }
-.chip { flex: none; display: inline-flex; align-items: center; gap: 6px; font: inherit; font-size: 14px; color: var(--ink); background: transparent;
-  border: 1px solid var(--line); border-radius: 999px; padding: 5px 13px; cursor: pointer; }
-.chip small { color: var(--sub); font-size: 12px; font-variant-numeric: tabular-nums; }
-.chip.on { background: var(--card); border-color: var(--accent); font-weight: 700; }
-.chip:focus-visible, a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
-.dot { display: inline-block; width: 9px; height: 9px; border-radius: 50%; flex: none; }
-.dot.sanwa { background: var(--sanwa); } .dot.toyomatsu { background: var(--toyomatsu); } .dot.yuki { background: var(--yuki); } .dot.jinseki { background: var(--jinseki); } .dot.other { background: var(--other); }
-
-main { padding-block: 8px 40px; }
-.month { font-size: 22px; font-weight: 700; margin: 26px 0 6px; display: flex; align-items: baseline; gap: 10px; }
-.month span { font-size: 13px; font-weight: 500; color: var(--sub); }
-.day { display: grid; grid-template-columns: 52px 1fr; gap: 10px; padding-block: 10px; border-top: 1px solid var(--line); }
-.date { display: flex; flex-direction: column; align-items: center; line-height: 1.1; padding-top: 6px; }
-.date .num { font-size: 24px; font-weight: 700; font-variant-numeric: tabular-nums; }
-.date .wd { font-size: 12px; color: var(--sub); margin-top: 3px; }
-.date.sat .num, .date.sat .wd { color: var(--sat); } .date.sun .num, .date.sun .wd { color: var(--sun); }
-.today { margin-top: 5px; font-size: 10px; font-weight: 700; color: var(--card); background: var(--accent); border-radius: 999px; padding: 2px 6px; white-space: nowrap; }
-.day ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 6px; min-width: 0; }
-.day li a, .day li .row { display: grid; grid-template-columns: 48px 1fr auto; gap: 8px; align-items: start; background: var(--card); border-radius: 10px;
-  padding: 9px 12px; color: inherit; text-decoration: none; }
-.time { font-size: 13px; color: var(--sub); font-variant-numeric: tabular-nums; padding-top: 2px; line-height: 1.4; }
-.what { min-width: 0; display: flex; flex-direction: column; gap: 1px; }
-.what b { font-weight: 700; font-size: 16px; line-height: 1.45; overflow-wrap: anywhere; }
-.where { font-size: 12.5px; color: var(--sub); display: flex; align-items: baseline; gap: 6px; overflow-wrap: anywhere; }
-.where .dot { transform: translateY(-1px); }
-.go { color: var(--sub); font-size: 18px; line-height: 1.3; }
-.empty { color: var(--sub); padding-block: 28px; text-align: center; }
-
-.centers { background: var(--band); padding-block: 26px 30px; }
-.centers h2 { font-size: 18px; margin: 0 0 4px; }
-.centers p { margin: 0 0 14px; font-size: 13.5px; color: var(--sub); }
-.centers ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; }
-.centers li { display: grid; grid-template-columns: 9px 1fr; gap: 10px; align-items: start; }
-.centers li .dot { margin-top: 9px; }
-.centers li div { display: flex; flex-direction: column; min-width: 0; }
-.centers li span { font-size: 13px; color: var(--sub); }
-.centers a { color: var(--accent); font-size: 14px; font-weight: 700; text-decoration: none; margin-top: 2px; }
-.centers .nolink { margin-top: 2px; }
-footer { padding-block: 22px 34px; font-size: 12.5px; color: var(--sub); }
-footer p { margin: 0 0 6px; }
+body{margin:0;background:#e6ecf1;color:#283646;font-family:"Hiragino Maru Gothic ProN","Hiragino Sans","Yu Gothic",sans-serif;line-height:1.7}
+main{max-width:520px;margin:0 auto;padding:64px 20px}
+h1{font-size:22px;margin:0 0 12px}
+a{color:#4a688a;font-weight:700}
+@media (prefers-color-scheme:dark){body{background:#1b232c;color:#e4ebf1}a{color:#9dbbd9}}
 </style>
 </head>
 <body>
-
-<header><div class="wrap">
-  <div class="brand">神石高原じゃけん</div>
-  <h1>神石高原の催し</h1>
-  <p class="lead">4つの協働支援センターと、観光協会・町の広報に出ている予定をひとつに並べました。11月25日から1月18日まで。</p>
-  <span class="badge">非公式のまとめ</span>
-</div></header>
-
-<nav class="filter" aria-label="出どころでしぼる"><div class="wrap"><button type="button" class="chip on" data-f="all" aria-pressed="true">すべて<small>34</small></button><button type="button" class="chip" data-f="sanwa" aria-pressed="false"><i class="dot sanwa"></i>三和<small>14</small></button><button type="button" class="chip" data-f="toyomatsu" aria-pressed="false"><i class="dot toyomatsu"></i>豊松<small>9</small></button><button type="button" class="chip" data-f="yuki" aria-pressed="false"><i class="dot yuki"></i>油木<small>0</small></button><button type="button" class="chip" data-f="jinseki" aria-pressed="false"><i class="dot jinseki"></i>神石<small>5</small></button><button type="button" class="chip" data-f="other" aria-pressed="false"><i class="dot other"></i>そのほか<small>6</small></button></div></nav>
-
-<main><div class="wrap" id="list">
-<h2 class="month" data-month>11月<span>2026年</span></h2>
-<section class="day" data-day><div class="date"><span class="num">26</span><span class="wd">木</span><span class="today">あした</span></div><ul><li data-c="jinseki"><div class="row"><span class="time">18:30<br>〜20:00</span><span class="what"><b>有害鳥獣対策研修会（入場無料）</b><span class="where"><i class="dot jinseki"></i>神石・総合交流センターじんせきの里</span></span></div></li><li data-c="other"><a href="https://www.yukkura-kohshinji.jp/news/224732" target="_blank" rel="noopener"><span class="time">—</span><span class="what"><b>いい風呂の日 イベント</b><span class="where"><i class="dot other"></i>光信寺の湯 ゆっくら</span></span><span class="go" aria-hidden="true">›</span></a></li><li data-c="toyomatsu"><a href="https://www.toyomatsumura.com/pg332.html" target="_blank" rel="noopener"><span class="time">—</span><span class="what"><b>キッズわくわく広場</b><span class="where"><i class="dot toyomatsu"></i>豊松</span></span><span class="go" aria-hidden="true">›</span></a></li></ul></section>
-<section class="day" data-day><div class="date sat"><span class="num">28</span><span class="wd">土</span></div><ul><li data-c="other"><a href="https://jkougen.jp/kankou/" target="_blank" rel="noopener"><span class="time">—</span><span class="what"><b>わんぱくトマトガーデン イルミネーション開始</b><span class="where"><i class="dot other"></i>観光協会・道の駅 さんわ 182ステーション北側</span></span><span class="go" aria-hidden="true">›</span></a></li><li data-c="toyomatsu"><a href="https://www.toyomatsumura.com/pg332.html" target="_blank" rel="noopener"><span class="time">—</span><span class="what"><b>健康作り教室〈ピラティス〉</b><span class="where"><i class="dot toyomatsu"></i>豊松</span></span><span class="go" aria-hidden="true">›</span></a></li></ul></section>
-<section class="day" data-day><div class="date sun"><span class="num">29</span><span class="wd">日</span></div><ul><li data-c="other"><div class="row"><span class="time">13:00</span><span class="what"><b>けんみん文化祭ひろしま&#x27;26 福山地区フェスティバル（入場無料）</b><span class="where"><i class="dot other"></i>広報・さんわ総合センターやまなみ文化ホール</span></span></div></li></ul></section>
-<section class="day" data-day><div class="date"><span class="num">30</span><span class="wd">月</span></div><ul><li data-c="sanwa"><a href="https://www.sanwa-kyodo.com/%E6%95%99%E5%AE%A4%E6%A1%88%E5%86%85/%E8%A1%8C%E4%BA%8B%E4%BA%88%E5%AE%9A/" target="_blank" rel="noopener"><span class="time">13:30</span><span class="what"><b>健康寿命を延ばそう体操</b><span class="where"><i class="dot sanwa"></i>三和・集会室</span></span><span class="go" aria-hidden="true">›</span></a></li></ul></section>
-<h2 class="month" data-month>12月<span>2026年</span></h2>
-<section class="day" data-day><div class="date"><span class="num">3</span><span class="wd">木</span></div><ul><li data-c="sanwa"><a href="https://www.sanwa-kyodo.com/%E6%95%99%E5%AE%A4%E6%A1%88%E5%86%85/%E8%A1%8C%E4%BA%8B%E4%BA%88%E5%AE%9A/" target="_blank" rel="noopener"><span class="time">09:30</span><span class="what"><b>お菓子教室</b><span class="where"><i class="dot sanwa"></i>三和・調理実習室</span></span><span class="go" aria-hidden="true">›</span></a></li><li data-c="jinseki"><div class="row"><span class="time">19:00<br>〜20:00</span><span class="what"><b>ChatGPT教室（第2回）</b><span class="where"><i class="dot jinseki"></i>神石・総合交流センターじんせきの里</span></span></div></li><li data-c="toyomatsu"><a href="https://www.toyomatsumura.com/pg332.html" target="_blank" rel="noopener"><span class="time">—</span><span class="what"><b>キッズわくわく広場</b><span class="where"><i class="dot toyomatsu"></i>豊松</span></span><span class="go" aria-hidden="true">›</span></a></li></ul></section>
-<section class="day" data-day><div class="date"><span class="num">4</span><span class="wd">金</span></div><ul><li data-c="other"><div class="row"><span class="time">10:00<br>〜15:00</span><span class="what"><b>人権相談所</b><span class="where"><i class="dot other"></i>広報・油木コミュニティセンター・三和協働支援センター・とよまつ総合センター・総合交流センターじんせきの里</span></span></div></li><li data-c="sanwa"><a href="https://www.sanwa-kyodo.com/%E6%95%99%E5%AE%A4%E6%A1%88%E5%86%85/%E8%A1%8C%E4%BA%8B%E4%BA%88%E5%AE%9A/" target="_blank" rel="noopener"><span class="time">19:00</span><span class="what"><b>そば打ち道場</b><span class="where"><i class="dot sanwa"></i>三和・調理実習室</span></span><span class="go" aria-hidden="true">›</span></a></li></ul></section>
-<section class="day" data-day><div class="date sat"><span class="num">5</span><span class="wd">土</span></div><ul><li data-c="jinseki"><div class="row"><span class="time">13:00<br>〜15:00</span><span class="what"><b>マステとスタンプのデコレーション教室</b><span class="where"><i class="dot jinseki"></i>神石・総合交流センターじんせきの里</span></span></div></li><li data-c="other"><div class="row"><span class="time">14:00</span><span class="what"><b>絵本のおはなし会</b><span class="where"><i class="dot other"></i>広報・シルトピアカレッジ図書館内児童図書コーナー</span></span></div></li><li data-c="toyomatsu"><a href="https://www.toyomatsumura.com/pg332.html" target="_blank" rel="noopener"><span class="time">—</span><span class="what"><b>そば打ち教室</b><span class="where"><i class="dot toyomatsu"></i>豊松</span></span><span class="go" aria-hidden="true">›</span></a></li></ul></section>
-<section class="day" data-day><div class="date sun"><span class="num">6</span><span class="wd">日</span></div><ul><li data-c="sanwa"><a href="https://www.sanwa-kyodo.com/%E6%95%99%E5%AE%A4%E6%A1%88%E5%86%85/%E8%A1%8C%E4%BA%8B%E4%BA%88%E5%AE%9A/" target="_blank" rel="noopener"><span class="time">10:00</span><span class="what"><b>地域食堂</b><span class="where"><i class="dot sanwa"></i>三和・会議室、調理実習室</span></span><span class="go" aria-hidden="true">›</span></a></li></ul></section>
-<section class="day" data-day><div class="date"><span class="num">10</span><span class="wd">木</span></div><ul><li data-c="toyomatsu"><a href="https://www.toyomatsumura.com/pg332.html" target="_blank" rel="noopener"><span class="time">—</span><span class="what"><b>キッズわくわく広場</b><span class="where"><i class="dot toyomatsu"></i>豊松</span></span><span class="go" aria-hidden="true">›</span></a></li></ul></section>
-<section class="day" data-day><div class="date"><span class="num">11</span><span class="wd">金</span></div><ul><li data-c="sanwa"><a href="https://www.sanwa-kyodo.com/%E6%95%99%E5%AE%A4%E6%A1%88%E5%86%85/%E8%A1%8C%E4%BA%8B%E4%BA%88%E5%AE%9A/" target="_blank" rel="noopener"><span class="time">19:00</span><span class="what"><b>そば打ち道場</b><span class="where"><i class="dot sanwa"></i>三和・調理実習室</span></span><span class="go" aria-hidden="true">›</span></a></li></ul></section>
-<section class="day" data-day><div class="date sat"><span class="num">12</span><span class="wd">土</span></div><ul><li data-c="toyomatsu"><a href="https://www.toyomatsumura.com/pg332.html" target="_blank" rel="noopener"><span class="time">—</span><span class="what"><b>マナー教室</b><span class="where"><i class="dot toyomatsu"></i>豊松</span></span><span class="go" aria-hidden="true">›</span></a></li><li data-c="toyomatsu"><a href="https://www.toyomatsumura.com/pg332.html" target="_blank" rel="noopener"><span class="time">—</span><span class="what"><b>北海道物産市</b><span class="where"><i class="dot toyomatsu"></i>豊松</span></span><span class="go" aria-hidden="true">›</span></a></li></ul></section>
-<section class="day" data-day><div class="date sun"><span class="num">13</span><span class="wd">日</span></div><ul><li data-c="other"><a href="https://jkougen.jp/kankou/kagura_koushinji/" target="_blank" rel="noopener"><span class="time">09:30</span><span class="what"><b>神石高原神楽共演会</b><span class="where"><i class="dot other"></i>観光協会・光信寺 本堂</span></span><span class="go" aria-hidden="true">›</span></a></li></ul></section>
-<section class="day" data-day><div class="date"><span class="num">16</span><span class="wd">水</span></div><ul><li data-c="toyomatsu"><a href="https://www.toyomatsumura.com/pg332.html" target="_blank" rel="noopener"><span class="time">—</span><span class="what"><b>英会話教室</b><span class="where"><i class="dot toyomatsu"></i>豊松</span></span><span class="go" aria-hidden="true">›</span></a></li></ul></section>
-<section class="day" data-day><div class="date"><span class="num">17</span><span class="wd">木</span></div><ul><li data-c="jinseki"><div class="row"><span class="time">19:00<br>〜20:00</span><span class="what"><b>ChatGPT教室（第3回）</b><span class="where"><i class="dot jinseki"></i>神石・総合交流センターじんせきの里</span></span></div></li><li data-c="toyomatsu"><a href="https://www.toyomatsumura.com/pg332.html" target="_blank" rel="noopener"><span class="time">—</span><span class="what"><b>キッズわくわく広場</b><span class="where"><i class="dot toyomatsu"></i>豊松</span></span><span class="go" aria-hidden="true">›</span></a></li></ul></section>
-<section class="day" data-day><div class="date"><span class="num">18</span><span class="wd">金</span></div><ul><li data-c="sanwa"><a href="https://www.sanwa-kyodo.com/%E6%95%99%E5%AE%A4%E6%A1%88%E5%86%85/%E8%A1%8C%E4%BA%8B%E4%BA%88%E5%AE%9A/" target="_blank" rel="noopener"><span class="time">13:30</span><span class="what"><b>味噌づくり教室</b><span class="where"><i class="dot sanwa"></i>三和・調理実習室</span></span><span class="go" aria-hidden="true">›</span></a></li></ul></section>
-<section class="day" data-day><div class="date sat"><span class="num">19</span><span class="wd">土</span></div><ul><li data-c="jinseki"><div class="row"><span class="time">13:30<br>〜15:30</span><span class="what"><b>フラワーデザインクラブ</b><span class="where"><i class="dot jinseki"></i>神石・総合交流センターじんせきの里</span></span></div></li></ul></section>
-<section class="day" data-day><div class="date sun"><span class="num">20</span><span class="wd">日</span></div><ul><li data-c="sanwa"><a href="https://www.sanwa-kyodo.com/%E6%95%99%E5%AE%A4%E6%A1%88%E5%86%85/%E8%A1%8C%E4%BA%8B%E4%BA%88%E5%AE%9A/" target="_blank" rel="noopener"><span class="time">10:00</span><span class="what"><b>さんわフリマ</b><span class="where"><i class="dot sanwa"></i>三和</span></span><span class="go" aria-hidden="true">›</span></a></li></ul></section>
-<section class="day" data-day><div class="date"><span class="num">21</span><span class="wd">月</span></div><ul><li data-c="sanwa"><a href="https://www.sanwa-kyodo.com/%E6%95%99%E5%AE%A4%E6%A1%88%E5%86%85/%E8%A1%8C%E4%BA%8B%E4%BA%88%E5%AE%9A/" target="_blank" rel="noopener"><span class="time">13:30</span><span class="what"><b>健康寿命を延ばそう体操</b><span class="where"><i class="dot sanwa"></i>三和・集会室</span></span><span class="go" aria-hidden="true">›</span></a></li></ul></section>
-<section class="day" data-day><div class="date"><span class="num">23</span><span class="wd">水</span></div><ul><li data-c="sanwa"><a href="https://www.sanwa-kyodo.com/%E6%95%99%E5%AE%A4%E6%A1%88%E5%86%85/%E8%A1%8C%E4%BA%8B%E4%BA%88%E5%AE%9A/" target="_blank" rel="noopener"><span class="time">09:30</span><span class="what"><b>自分で作るランチの日【やまびこ三和館】</b><span class="where"><i class="dot sanwa"></i>三和・会議室、調理実習室</span></span><span class="go" aria-hidden="true">›</span></a></li></ul></section>
-<section class="day" data-day><div class="date"><span class="num">25</span><span class="wd">金</span></div><ul><li data-c="sanwa"><a href="https://www.sanwa-kyodo.com/%E6%95%99%E5%AE%A4%E6%A1%88%E5%86%85/%E8%A1%8C%E4%BA%8B%E4%BA%88%E5%AE%9A/" target="_blank" rel="noopener"><span class="time">10:30</span><span class="what"><b>自分で作るランチの日【やまびこ来見館】</b><span class="where"><i class="dot sanwa"></i>三和・くるみふれあいプラザ</span></span><span class="go" aria-hidden="true">›</span></a></li></ul></section>
-<section class="day" data-day><div class="date"><span class="num">28</span><span class="wd">月</span></div><ul><li data-c="sanwa"><a href="https://www.sanwa-kyodo.com/%E6%95%99%E5%AE%A4%E6%A1%88%E5%86%85/%E8%A1%8C%E4%BA%8B%E4%BA%88%E5%AE%9A/" target="_blank" rel="noopener"><span class="time">13:30</span><span class="what"><b>健康寿命を延ばそう体操</b><span class="where"><i class="dot sanwa"></i>三和・集会室</span></span><span class="go" aria-hidden="true">›</span></a></li></ul></section>
-<h2 class="month" data-month>1月<span>2027年</span></h2>
-<section class="day" data-day><div class="date"><span class="num">11</span><span class="wd">月</span></div><ul><li data-c="sanwa"><a href="https://www.sanwa-kyodo.com/%E6%95%99%E5%AE%A4%E6%A1%88%E5%86%85/%E8%A1%8C%E4%BA%8B%E4%BA%88%E5%AE%9A/" target="_blank" rel="noopener"><span class="time">13:30</span><span class="what"><b>健康寿命を延ばそう体操</b><span class="where"><i class="dot sanwa"></i>三和・集会室</span></span><span class="go" aria-hidden="true">›</span></a></li></ul></section>
-<section class="day" data-day><div class="date sat"><span class="num">16</span><span class="wd">土</span></div><ul><li data-c="sanwa"><a href="https://www.sanwa-kyodo.com/%E6%95%99%E5%AE%A4%E6%A1%88%E5%86%85/%E8%A1%8C%E4%BA%8B%E4%BA%88%E5%AE%9A/" target="_blank" rel="noopener"><span class="time">10:00</span><span class="what"><b>さんわフリマ</b><span class="where"><i class="dot sanwa"></i>三和</span></span><span class="go" aria-hidden="true">›</span></a></li></ul></section>
-<section class="day" data-day><div class="date"><span class="num">18</span><span class="wd">月</span></div><ul><li data-c="sanwa"><a href="https://www.sanwa-kyodo.com/%E6%95%99%E5%AE%A4%E6%A1%88%E5%86%85/%E8%A1%8C%E4%BA%8B%E4%BA%88%E5%AE%9A/" target="_blank" rel="noopener"><span class="time">13:30</span><span class="what"><b>健康寿命を延ばそう体操</b><span class="where"><i class="dot sanwa"></i>三和・集会室</span></span><span class="go" aria-hidden="true">›</span></a></li></ul></section>
-<p class="empty" id="empty" hidden>ここは、いま載っている予定がありません。</p>
-</div></main>
-
-<section class="centers"><div class="wrap">
-  <h2>もとの情報</h2>
-  <p>くわしい内容・申し込み・変更は、それぞれの主催者で確かめてください。</p>
-  <ul><li><i class="dot sanwa"></i><div><b>三和協働支援センター</b><span>センターのHPにある予定表から・14件</span><a href="https://www.sanwa-kyodo.com/" target="_blank" rel="noopener">センターのHPを見る ›</a></div></li><li><i class="dot toyomatsu"></i><div><b>豊松協働支援センター</b><span>センターのHPにある行事カレンダーから・9件</span><a href="https://www.toyomatsumura.com/pg332.html" target="_blank" rel="noopener">センターのHPを見る ›</a></div></li><li><i class="dot yuki"></i><div><b>油木協働支援センター</b><span>センターのHPにある大人の教室の一覧から・いま載っている予定はありません</span><a href="https://www.kagayakinet.ne.jp/y-kyoudou/" target="_blank" rel="noopener">センターのHPを見る ›</a></div></li><li><i class="dot jinseki"></i><div><b>神石協働支援センター</b><span>センターがインスタに出した告知から・5件</span><span class="nolink">HPは止まっていて、インスタで発信されています</span></div></li><li><i class="dot other"></i><div><b>観光協会・町の広報など</b><span>観光協会のお知らせ・広報神石高原・ゆっくらのHP・県の観光サイト・チラシや回覧から・6件</span><a href="https://jkougen.jp/kankou/" target="_blank" rel="noopener">観光協会のHPを見る ›</a></div></li></ul>
-</div></section>
-
-<footer><div class="wrap">
-  <p>このページは各センターや観光協会が公開している予定を集めて並べた非公式のまとめです。センターや町が作ったものではありません。</p>
-  <p>時間が「—」の催しは、もとのHPに時間が載っていないものです。</p>
-  <p>2026年11月25日に集めました。</p>
-</div></footer>
-
-<script>
-(function () {
-  var chips = document.querySelectorAll('.chip'), list = document.getElementById('list'), empty = document.getElementById('empty');
-  function apply(f) {
-    chips.forEach(function (c) { var on = c.dataset.f === f; c.classList.toggle('on', on); c.setAttribute('aria-pressed', on); });
-    var shown = 0;
-    list.querySelectorAll('[data-day]').forEach(function (d) {
-      var n = 0;
-      d.querySelectorAll('li').forEach(function (li) { var ok = f === 'all' || li.dataset.c === f; li.hidden = !ok; if (ok) n++; });
-      d.hidden = !n; shown += n;
-    });
-    var kids = Array.prototype.slice.call(list.children);
-    kids.forEach(function (el, i) {
-      if (!el.hasAttribute('data-month')) return;
-      var any = false;
-      for (var j = i + 1; j < kids.length && !kids[j].hasAttribute('data-month'); j++) if (kids[j].hasAttribute('data-day') && !kids[j].hidden) any = true;
-      el.hidden = !any;
-    });
-    empty.hidden = shown > 0;
-  }
-  chips.forEach(function (c) { c.addEventListener('click', function () { apply(c.dataset.f); }); });
-})();
-</script>
-
+<main>
+<h1>このページは引っ越しました</h1>
+<p>神石高原の催しのまとめは、新しい場所に移りました。3秒後に自動で移ります。</p>
+<p><a href="https://jinsekikogen-jaken.github.io/">https://jinsekikogen-jaken.github.io/</a></p>
+</main>
 </body>
 </html>
